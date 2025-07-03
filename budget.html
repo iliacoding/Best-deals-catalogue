@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Deals Catalogue</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #eef2f3, #ffffff);
+      padding: 2rem;
+      color: #333;
+    }
+    .top-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .top-button a {
+      background-color: #0073e6;
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+    .top-button a:hover {
+      background-color: #005bb5;
+      transform: translateY(-5px);
+    }
+    .search-container {
+      position: relative;
+      width: 300px;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    #searchInput {
+      padding: 0.5rem 2rem 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      width: 100%;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #666;
+      cursor: pointer;
+      display: none;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #2a2a2a;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-35px);
+    }
+    .card img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.5rem 1rem;
+      background-color: #0073e6;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .card a:hover {
+      background-color: #005bb5;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin: 0.75rem 0 0.25rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+      .top-button {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .top-button a {
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+      }
+      .search-container {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-button">
+    <a href="index.html">Back to best deals page</a>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search items..." onkeyup="filterCards()" />
+      <button class="clear-btn" onclick="clearSearch()" id="clearBtn">&times;</button>
+    </div>
+  </div>
+
+  <h1>Best deals</h1>
+
+  <div class="grid" id="cardGrid">
+
+    <div class="card">
+      <p>Yet to come</p>
+      <a href="index.html">Back to best deals page</a>
+    </div>
+
+        <!-- <div class="grid">
+    <div class="card">
+      <img src="13.jpg" alt="Bonaire Portable Electric Convection Heater 2400W">
+      <p>Bonaire Portable Electric Convection Heater 2400W</p>
+      <a href="https://www.amazon.com.au/gp/product/B0D4DRZBYN?smid=A1V8ID2GXPNRPW&psc=1&linkCode=ll1&tag=thesmartcart-22&linkId=ebf67970303d5653c58ee678c0f495bc&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="" alt="">
+      <p></p>
+      <a href="" target="_blank">Buy Now</a>
+    </div> -->
+
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function filterCards() {
+      const input = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      let anyVisible = false;
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(input)) {
+          card.style.display = '';
+          anyVisible = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      clearBtn.style.display = input ? 'block' : 'none';
+    }
+
+    function clearSearch() {
+      searchInput.value = '';
+      filterCards();
+    }
+  </script>
+
+</body>
+</html>

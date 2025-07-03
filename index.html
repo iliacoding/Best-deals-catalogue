@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Deals Catalogue</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #eef2f3, #ffffff);
+      padding: 2rem;
+      color: #333;
+    }
+    .top-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .top-button a {
+      background-color: #0073e6;
+      color: white;
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      font-size: 1.7rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .top-button a:hover {
+      background-color: #005bb5;
+      transform: translateY(-5px);
+    }
+    .search-container {
+      position: relative;
+      width: 300px;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    #searchInput {
+      padding: 0.5rem 2rem 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      width: 100%;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #666;
+      cursor: pointer;
+      display: none;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #2a2a2a;
+      margin-bottom: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    /* Disable hover effect on touch devices */
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover {
+        transform: translateY(-35px);
+      }
+    }
+    .card:hover {
+      transform: translateY(-35px);
+    }
+    .card img {
+      max-width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.5rem 1rem;
+      background-color: #0073e6;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .card a:hover {
+      background-color: #005bb5;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin: 0.75rem 0 0.25rem;
+      flex-grow: 1;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .top-button {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .top-button a {
+        font-size: 1.3rem;
+        text-align: center;
+        width: 100%;
+      }
+      .search-container {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      #searchInput {
+        font-size: 1.1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .card img {
+        height: 150px;
+      }
+      .card p {
+        font-size: 0.9rem;
+      }
+      .card a {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-button">
+    <a href="budget.html">View Budget Page</a>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search items..." onkeyup="filterCards()" />
+      <button class="clear-btn" onclick="clearSearch()" id="clearBtn">&times;</button>
+    </div>
+  </div>
+
+  <h1>Best deals</h1>
+
+  <div class="grid">
+    <!-- Your cards go here, unchanged -->
+    <div class="grid">
+    <div class="card">
+      <img src="1.jpg" alt="Ring Doorbell">
+      <p>Ring Video Doorbell by Amazon, Venetian Bronze, Works with Alexa + Echo</p>
+      <a href="https://www.amazon.com.au/Doorbell-Amazon-Venetian-Bronze-Charcoal/dp/B0BQQGZVQF?crid=2MJ2G34N24WWZ&dib=eyJ2IjoiMSJ9.Zj9cjN6gsUInYopz_8reKElobert4ooZnlYLzF6Oa-4KP2X1OCXQWtWERV0pdJC65Vqjl-7E38aj2RDQhZdeht8zBu22djHSxQ2vHVOW60ZHtya69K-ePRvwB7UPKiQYPP-2kpQUU41AxV8mpzBH0k_mJwLh9AuYmISZmq22ZS_zE7vOZ9e4lcTZyseFjxNt1rJwkHUmxOFB5eBXQSob1FKBMSITMh7_S8cXu3L1SfZc6Ppk4DHRe8YIADby_IVX6iouQ6X_1nngeIixgyB4cRmyyUXSTatXgEPYmCWAFSE.ixUmX-U5H2wZxyxwc_xsDqCMJmZ3LjmPtZWEn6EgPA0&dib_tag=se&keywords=ring+and+Alexa+deal&qid=1751510394&sprefix=ring+and+alexa+dea%2Caps%2C363&sr=8-10&linkCode=ll1&tag=thesmartcart-22&linkId=fac7cbfe76ed7f35d0235634fbb121d8&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="2.jpg" alt="Echo Dot">
+      <p>Echo Dot (Newest gen) | Smart speaker with Alexa | Charcoal</p>
+      <a href="https://www.amazon.com.au/All-New-release-Smart-speaker-Charcoal/dp/B09B8YP8KY?crid=BMZGD6IAM9T2&dib=eyJ2IjoiMSJ9.SGTxYWGJ0g8HvFhajR5xQLROvgR-yo_MM0m7CeS9kWkMvScoeN18RusLe47mIlVPfpElhvw9leSL2MHRFVpLngwMVC6zEap0ZHwX1BrXnAvF_r3XEbVOFUKRV_O_KLRK5mDJhMbSszDeYK_jDfs3L_fR7EES9hqcurpWN3iXmKsFlt_Kghokk7ygM5nsadkISv0FXiiNPkyEQoUHOHDggthKXEcvL81OZZ79SlcqXPgTO0L_QOmfPbA9j4QcjAjhVPeWcUrMXx7pQAV-DUC-29M5mJ__ygu5AV5ik0wS8g4.ksqn2IdFoJhFsm2_4ZvsAjeWYzLJD4m06sBLkMvMGaI&dib_tag=se&keywords=Alexa&qid=1751510633&sprefix=ale%2Caps%2C460&sr=8-5&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=2aa2ef608e9a19ed1605ef9e8d3ddcec&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="3.jpg" alt="Beats Pill">
+      <p>Beats Pill - Wireless Bluetooth Speaker and Portable Charger via USB-C</p>
+      <a href="https://www.amazon.com.au/Beats-Pill-Compatible-Built-Microphone/dp/B0DFKV6XDY?crid=134KWW7R6GXQ2&dib=eyJ2IjoiMSJ9.SKrBTNR6do_m1CLMM8HZCwvMnzrYGQ0JtuwHRqZpv-CLU5xI2wMwmvR5azup9opXbFKBjOGqN5rqnx8oqswjQfYxhjqgKy209w-Gov3iiTr_VWWdyv5PnavK8XlCjtA82Wy6yOtquzhi5_b0L7d2Vft5e2aeOsehDCV00BgplPp1uw_c5oaiQVihv3cCNytDFambdGbOdyszGSi1jnvQGjSUisrMsCyrAFYXW8aMWsV--m8kkBYxDDJPPLSh3Nhv6xg_zSF594555Q3AcA8wj9_Pg17OtYGLPtoELA9-zMY.OK_ycLVYCsV2l1WV6U87aL5chdBu0OimzxXB4oWaPIg&dib_tag=se&keywords=beats+pill&qid=1751510981&sprefix=beats+pi%2Caps%2C421&sr=8-1&linkCode=ll1&tag=thesmartcart-22&linkId=8ca119a172fa7a503c2c8f8f91000933&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="4.jpg" alt="Headphones">
+      <p>Bose QuietComfort Ultra Bluetooth Wireless Noise Cancelling Headphones</p>
+      <a href="https://www.amazon.com.au/Bose-QuietComfort-Wireless-Cancelling-Headphones/dp/B0CCZ1L489?crid=TZLMMTJCLLYB&dib=eyJ2IjoiMSJ9.oDubctgHxZIIiATD2fFVPO0oDGq02KK61FE3AF8ZMdHWybJ5vU5mYCzHRnD_q52nN4MmiLETvplgJowogygeNMdjTcvnk5Iy2CMlBKY1h9o7sxV1IyDjGUphiN701wKQk47JjJ9Pm81yVjnxaLOLTUU4AEsdAR7_8CxN2LvWB1pCkKg7Y0Ty5Te2LHWMi-7H-GiiqYQf1ubSTT_YlVnP6d8xqSWnSjKNHAUIbAhc8O8MrqzF01Wasmm5KF3gvmA1_couM0pyirjl6KzZwxVM9K9DPjed02SZ-Wrf4XB4FZo.LwiUKou4RIa_QeRGGrR39lWtwVct8lcA6JAjkRUKslI&dib_tag=se&keywords=headphones&qid=1751511204&sprefix=headphone%2Caps%2C367&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=5aeecdcc02a33288f2121af0931eef0d&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="5.jpg" alt="JBL Live Beam 3 True Wireless Noise Cancelling Earbuds with Screen, Black">
+      <p>JBL Live Beam 3 True Wireless Noise Cancelling Earbuds with Screen, Black</p>
+      <a href="https://www.amazon.com.au/JBL-Wireless-Cancelling-Earbuds-Screen/dp/B0D44H2RG3?crid=UABHAD85BXC8&dib=eyJ2IjoiMSJ9.Ft7KR38FyGElUis1zxtjJPnLjhR12W2TO2Bw-FMi6MS9um_vOUJH9Jni0MD3rFl8jjYQH2mFqymgE0pa-rFv0I-qEUTeBxPIXGSXY7u4OTO6fBvu7upVOG-IsXU_-N0u-6t64jYVTOEm-nPNqYVhiwwnZxctA3SNBd1KaXbkWpQJuuFEqZuRrbBKarcQiHhmCQXgMZ4A5G80jaACD6z97u3ytiNGuwPBTcTNn9TPD3EodLwxwnF2oSlZ9462IICbNUlpqkFcGxUIIuQS9fDWn0WGmIvrQ8Z45uVMLirRv1M.81-Vpuns2-WP840oUNiuHuqmfFKJVMBuVTCYuG8-Pmk&dib_tag=se&keywords=wireless%2Bearbuds&qid=1751511911&sprefix=wirelesearbuds%2Caps%2C301&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=6d9c7f33e42027d4755ed6b4f5164b06&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="6.jpg" alt="ECOVACS DEEBOT N20 Plus Robot Vacuum Cleaner">
+      <p>ECOVACS DEEBOT N20 Plus Robot Vacuum Cleaner</p>
+      <a href="https://www.amazon.com.au/ECOVACS-N20-Cleaner-PureCyclone-ZeroTangle/dp/B0D6WGCYDL?crid=1BHQJVOKRW8V7&dib=eyJ2IjoiMSJ9.hr1JewMRLt-41tNCCM3XeUr0bX5-9NN9DqWiIhO4THopuY0mRRjy5vPjYTKjRQYxWdlSSvmTZv258i64wKErVnLmlqqNt-QtLZKHZXH-Bx6Xl-8Q9bHTI2Q9n5fwdul7NIMx3c_zqUAMX5GTYY9THvOfM50OKARXSI75885ZXKYy4dQ4CblZHlYtnO0CY7mli44KKA_vq4ughPSxOb7dptnB5plvYW83M82QeB1WYHI_aHOQ_igtxQCHHfN7w9QkM7rKhORZP1K1ipj2SLxkEere6Iky-nSkDcFiRWPEIuQ.rfbVYYOioR3_dOh7ZB9tw-tyMzyRCX-HSof1ceRXuaE&dib_tag=se&keywords=robot%2Bvacuum&qid=1751512147&sprefix=robotvacuum%2Caps%2C296&sr=8-6&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=3ec2964c34b32f082e0ff7bb1ae83eac&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="7.jpg" alt="Household Heater,Fast Heat Smart WiFi Heater">
+      <p>Household Heater,Fast Heat Smart WiFi Heater</p>
+      <a href="https://www.amazon.com.au/Household-Constant-Temperature-Electric-Convection/dp/B0BK594KP6?crid=2WKC4CG35GSMO&dib=eyJ2IjoiMSJ9.QRYdNgH9CA47juJdauII_fVuXqMgOYdg92Y9tMrpEKIKPi3FRlwYSYL79ymEQv5EQ3GSu0D4pBWVPCrmRgr3Z7cLvIvyaPORN2rkOJZQj5pE8kzl_tthJcUXbq6GkS8gLD7DoiFrZgPqDgaDO7nO0rAQzvxt11Ima1MJqWtos3Lx0sGdoHhpWR0UK6uzIC-0duwVp6P8dmJdwbt7TRQGmi555hUfiTlWnC6pvITAIysOu8OOhusHKdAfTHQpCeMJ2yjm50vkG5ORarfsx4p9g33qQfWPbY03-BTNsJDTVl4.XCP2JrsadrBrBWZYP6nKWLQwPkV2yfVhxL7ubvbh4NM&dib_tag=se&keywords=heater&qid=1751512442&sprefix=hea%2Caps%2C364&sr=8-61&xpid=ybLDHrDmPj5Dn&linkCode=ll1&tag=thesmartcart-22&linkId=1b8c5d997edd565ae98bc3d0077a9e00&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="8.jpg" alt="Corsair Vengeance i5100 Gaming PC - Liquid Cooled Intel Core i9-14900KF CPU - NVIDIA GeForce RTX 4080 Super GPU - 32GB Dominator Titanium RGB DDR5 Memory - 2TB M.2 SSD - Black/Grey">
+      <p>PC - i9, rtx 4080, 2TB, 32GB RAM, RGB and liquid cooled</p>
+      <a href="https://www.amazon.com.au/Corsair-Vengeance-i5100-Gaming-i9-14900KF/dp/B0DG5TTKRZ?crid=1GBT8UJS9FWC4&dib=eyJ2IjoiMSJ9.qP2bsxpXWHowvzGlQVDXuV0kZimVLdA_0To7HvACNEgz-1kuoQjMVKFdllnUXav7eOM3W17_lDS571q2_5pz6vpfc0hv2CNT_S8rlUkJIdHvW5CkwNxfKS3NOLd_dY8snb9XEdDURzkiCNwiOUP1Jx066Y149Id6VojL7gnPZYcjSPsd-B0X8KCwZoMAO1CWNoJItAvMzUFIjOQyr5-ep1s9XsmuguPo4TOvcJubCMJYOVPYZ19dZq9-q_G2lMaj7UB2PrS30jUlyPJlx9dGPBQQN7B2qnPqxIkaOeeYuj8.UKO1Rt_vfhL-kZ80xzjlyZG2y_oiNmZB-ezqEPT_GsQ&dib_tag=se&keywords=PC&qid=1751512660&sprefix=pc%2Caps%2C317&sr=8-17&linkCode=ll1&tag=thesmartcart-22&linkId=57c3e6de0dfdac8789a72bae503080d2&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="9.jpg" alt="TV and Volume controls | Free TV, Alexa Voice Remote">
+      <p>TV and Volume controls | Free TV, Alexa Voice Remote</p>
+      <a href="https://www.amazon.com.au/Amazon-Fire-TV-Stick-HD-Alexa-Voice-TV-Remote-controls/dp/B0CQMZ24LR?crid=3F0QWW80HSBBD&dib=eyJ2IjoiMSJ9.dUw4_EY7z4ARlEMtIo8FZZjTZpQz4gKP8HfLUWDgx6qf8I1oqykItaeBgkJg7qWcGB_PbGUk1RtZ-OzXUIeScVmwPcdcU2B3NQUNnFp-97YPRLXGQ_gSahEb-ly63gFL9WL4XgV9hNPzBONa3vHk4WtgN0YQ-_RV5FLzRg1AJNPHCkU06AqLR45i2qciG5tJxB3LDbrpIAuiefBnC_cP8po1RCTnAHmes-098OPhQUW8YH0nnWBHDCAIaqHGgMGR59VHQLSS8BnGOKYnbG7TUvU2BrFG35G3cojj7BAffNE._AOzbdgrhoG5CBZgp2qIa-fpdFfadxfMLSUy6cFjNsc&dib_tag=se&keywords=amazon+tv&qid=1751518132&sprefix=amazon+%2Caps%2C311&sr=8-2&linkCode=ll1&tag=thesmartcart-22&linkId=71400f2beff530e12ef8d6da37acc7f2&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="10.jpg" alt="Prism+ Q75 Ultra | 75 inch | 4K QLED Smart Google TV | Voice Control | Built-in Chromecast | Netflix, YouTube, Prime & More">
+      <p>Prism+ Q75 Ultra | 75 inch | 4K QLED Smart Google TV</p>
+      <a href="https://www.amazon.com.au/PRISM-Playstore-ZeroBezel-Netflix-TruSurround/dp/B0CM8PKM7B?crid=2X3KZDP2C7KJF&dib=eyJ2IjoiMSJ9.SBZEqkBGSMj-HW6RPZelE2YVogyC3-7Z2jFKtikmWr1Tz3s2AQfj0PuU1K8B_monTDSoqElK5ZC677kX-jCygjIS5egLg2MBcAQuNIeusUFkpdYBHzRbR5HVg11Eayw462LnggMgZoF65uYHN4bYHSc_fGeAWTboEwam3g-osdHhUNEpMqwA_zy6yxK01vGDfMaFGCAM9GTQuiWHMYrZAcnBIVZ7W0nMCHQKHaqMdZIX_IBnQNt9fC7Z3ZRgdchv-89eyqkMXcxmsQ3c8zkSqBTIrRhZ6dwLVCCxcN8nN8A.tvr5BYfc1FsSznLIGh4e_ezSR8d8PIfq_Y5oEMMWHSI&dib_tag=se&keywords=tv&qid=1751518290&sprefix=tv%2Caps%2C320&sr=8-3-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=2015149e8cfcd74bb35b5c23e2fa81d9&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="11.jpg" alt="Valencia Pista Leather Reclining Sectional Sofa">
+      <p>Valencia Pista Leather Reclining Sectional Sofa</p>
+      <a href="https://www.amazon.com.au/Valencia-Leather-Reclining-Sectional-Chaise/dp/B0DS1Y63SM?crid=1AYW9VOQU65V5&dib=eyJ2IjoiMSJ9.6Qro4gCq-HZLNGhuFpdxx39OAxcOCkpq5a-axJbBFLl9aaZs4JeFEBYLM0057uTdsAotd1DaCtKipcFsp6uEpLMqT69326MIgpZjClZ7SzsELzSH6IdVnamJe9IMjKRj1MbMylY10qkg44XBu9dyTi_3KTxoxR0i5ssI3zZioaNelwHDL-ySo2B3nCv110K6_rKIjNA3SjF6NaZ8x9sSXKqtWFTh4NyZJnPJFkEvJ-MdMxcfuMCBXgLOqqVRAdFT0H6DlPYvHzoN8Ka26jOdk1Hw1DgwY0urUNKNxhZsVi8.apdbYMTqZUZQaL488ON2U0AEhNLXSLHLLtdtO8pjmH4&dib_tag=se&keywords=furniture&qid=1751542296&sprefix=%2Caps%2C329&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=17877669db6ff8a75d55d85a6f03de9a&language=en_AU&ref_=as_li_ss_tlhttps://www.amazon.com.au/Valencia-Leather-Reclining-Sectional-Chaise/dp/B0DS1Y63SM?crid=1AYW9VOQU65V5&dib=eyJ2IjoiMSJ9.6Qro4gCq-HZLNGhuFpdxx39OAxcOCkpq5a-axJbBFLl9aaZs4JeFEBYLM0057uTdsAotd1DaCtKipcFsp6uEpLMqT69326MIgpZjClZ7SzsELzSH6IdVnamJe9IMjKRj1MbMylY10qkg44XBu9dyTi_3KTxoxR0i5ssI3zZioaNelwHDL-ySo2B3nCv110K6_rKIjNA3SjF6NaZ8x9sSXKqtWFTh4NyZJnPJFkEvJ-MdMxcfuMCBXgLOqqVRAdFT0H6DlPYvHzoN8Ka26jOdk1Hw1DgwY0urUNKNxhZsVi8.apdbYMTqZUZQaL488ON2U0AEhNLXSLHLLtdtO8pjmH4&dib_tag=se&keywords=furniture&qid=1751542296&sprefix=%2Caps%2C329&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=17877669db6ff8a75d55d85a6f03de9a&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+
+
+    <div class="card">
+      <img src="12.jpg" alt="BilySen Electric Standing adjustable Desk">
+      <p>BilySen Electric Standing adjustable Desk</p>
+      <a href="https://www.amazon.com.au/BilySen-Electric-Standing-Adjustable-Ergonomic/dp/B0DSYHYY63?crid=3M6AEZDKCZYN2&dib=eyJ2IjoiMSJ9.hHPWMYijAMVEl3cvrVAEgX-kKuCUXD5VDqONfdXTxlHnb4YkF0IzjqV5fb-PNEJ_qMdXeOlqlMOKHEszdr-VZXd154YMThmgvRjT3asD5hl3xGCkR1j7vFqXReD59zP9yGA5BLcCm3lN7wd6224oKee985aHnHTeV8P6kXd9cWqtvGSh6CvNsWp3STAwJsBhnnDvHbJy-pU16pI9t3Kab9eLCvEgcRfWM9N2uuBauhNGBGa0ASUIdvEgEa8Kvwp7cjde9TINXC8G8t2_-NjtoIgkCQvu-L3Oqwx-lSlrCOM.0QRqc5bn06PQvkpMpeAU8KrMehJnzwZLtx2kwskqTYk&dib_tag=se&keywords=Gaming%2Bdesk&qid=1751518682&sprefix=gaming%2Bde%2Caps%2C310&sr=8-2&th=1&linkCode=ll1&tag=thesmartcart-22&linkId=bc41814ee40fe82deaea981bff296c3a&language=en_AU&ref_=as_li_ss_tl" target="_blank">Buy Now</a>
+    </div>
+    <!-- (repeat for all cards exactly as you have them) -->
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function filterCards() {
+      const input = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      let anyVisible = false;
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(input)) {
+          card.style.display = '';
+          anyVisible = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      clearBtn.style.display = input ? 'block' : 'none';
+    }
+
+    function clearSearch() {
+      searchInput.value = '';
+      filterCards();
+    }
+  </script>
+</body>
+</html>
